@@ -1,8 +1,16 @@
-const {getUsers, addUser} = require("./repository");
 const express = require('express')
 const cors = require('cors')
 const users = require('./users-router')
 const bodyParser = require('body-parser')
+
+const mongoose = require('mongoose')
+main().catch(err => console.log(err));
+
+async function main() {
+    await mongoose.connect('mongodb://localhost:27017/users');
+
+    // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
+}
 
 //создали express app
 const app = express()
